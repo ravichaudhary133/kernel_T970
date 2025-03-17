@@ -13,10 +13,12 @@ jobs:
       - name: Update dependence
         run: |
           sudo apt update
-          sudo apt install build-essential bc flex bison libncurses5-dev libssl-dev git ccache python3 libtinfo5 curl -y
+          sudo apt install build-essential bc flex bison libncurses5-dev libssl-dev git ccache python3 curl -y
           sudo rm -rf /usr/bin/python
           sudo ln -s /usr/bin/python3 /usr/bin/python
           python --version
+          wget http://security.ubuntu.com/ubuntu/pool/universe/n/ncurses/libtinfo5_6.3-2ubuntu0.1_amd64.deb
+          sudo apt install ./libtinfo5_6.3-2ubuntu0.1_amd64.deb
           
       - name: Checkout Repo
         uses: actions/checkout@v4
