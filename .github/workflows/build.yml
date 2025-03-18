@@ -14,6 +14,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install build-essential bc flex bison libncurses5-dev libssl-dev git ccache python3 curl -y
+          sudo apt install gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu -y
           sudo rm -rf /usr/bin/python
           sudo ln -s /usr/bin/python3 /usr/bin/python2
           sudo ln -s /usr/bin/python3 /usr/bin/python
@@ -49,6 +50,7 @@ jobs:
           	CROSS_COMPILE=$(pwd)/toolchain/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android- \
           	REAL_CC=$(pwd)/toolchain/llvm-arm-toolchain-ship/10.0/bin/clang"
           	export DTC_EXT=dtc
+            export LD=aarch64-linux-gnu-ld
             LLVM=1
             LLVM_IAS=1
             make ${args} vendor/gts7xlwifi_eur_open_defconfig 
